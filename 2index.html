@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rangreza Event Company | Creating Unforgettable Moments</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96B;
+    --gold-pale: #F5E6B8;
+    --crimson: #8B1A1A;
+    --crimson-deep: #5C0A0A;
+    --cream: #FAF6EE;
+    --cream-dark: #F0E8D5;
+    --charcoal: #1A1208;
+    --text-dark: #2C1A0E;
+    --text-mid: #5C3D1E;
+    --text-light: #8B6340;
+    --white: #FFFEF9;
+    --shadow-gold: 0 8px 40px rgba(201,168,76,0.25);
+    --shadow-deep: 0 20px 60px rgba(26,18,8,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Josefin Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--cream-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(26,18,8,0.95);
+    backdrop-filter: blur(12px);
+    padding: 18px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    color: var(--white);
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .nav-links {
+    display: flex; gap: 35px; list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,254,249,0.8);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--gold);
+    transform: scaleX(0); transition: transform 0.3s;
+    transform-origin: center;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--charcoal) !important;
+    padding: 10px 24px;
+    border-radius: 2px;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    transition: background 0.3s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: var(--charcoal);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,0.03) 40px, rgba(201,168,76,0.03) 41px),
+      repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(201,168,76,0.03) 40px, rgba(201,168,76,0.03) 41px);
+  }
+
+  .hero-gradient {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(139,26,26,0.3) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 80% at 80% 70%, rgba(201,168,76,0.12) 0%, transparent 60%);
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 0 5%;
+    max-width: 900px;
+    animation: heroFadeUp 1.2s ease forwards;
+  }
+
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0; animation: heroFadeUp 1s 0.3s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 14px;
+    opacity: 0; animation: heroFadeUp 1s 0.5s ease forwards;
+  }
+
+  .hero-title .gold { color: var(--gold); }
+  .hero-title .italic { font-style: italic; font-weight: 400; }
+
+  .hero-divider {
+    display: flex; align-items: center; gap: 16px;
+    justify-content: center;
+    margin: 24px 0;
+    opacity: 0; animation: heroFadeUp 1s 0.7s ease forwards;
+  }
+
+  .hero-divider-line { flex: 1; max-width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  .hero-divider-line:last-child { background: linear-gradient(90deg, var(--gold), transparent); }
+  .hero-divider-diamond { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    font-style: italic;
+    color: rgba(255,254,249,0.75);
+    margin-bottom: 36px;
+    line-height: 1.5;
+    opacity: 0; animation: heroFadeUp 1s 0.9s ease forwards;
+  }
+
+  .hero-message {
+    font-size: 0.88rem;
+    line-height: 1.9;
+    color: rgba(255,254,249,0.6);
+    max-width: 680px;
+    margin: 0 auto 44px;
+    letter-spacing: 0.5px;
+    opacity: 0; animation: heroFadeUp 1s 1.1s ease forwards;
+  }
+
+  .hero-btns {
+    display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: heroFadeUp 1s 1.3s ease forwards;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--charcoal);
+    padding: 16px 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(201,168,76,0.4);
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.6);
+    color: var(--gold);
+    padding: 15px 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,254,249,0.4);
+    font-size: 0.65rem; letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: scrollBounce 2s infinite;
+    z-index: 2;
+  }
+
+  .hero-scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ─── SECTIONS GENERAL ─── */
+  .section { padding: 100px 5%; }
+  .section-alt { background: var(--charcoal); }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  .section-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-alt .section-title { color: var(--white); }
+
+  .section-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--text-mid);
+    font-style: italic;
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .section-alt .section-subtitle { color: rgba(255,254,249,0.55); }
+
+  .section-divider {
+    display: flex; align-items: center; gap: 12px;
+    justify-content: center;
+    margin: 20px auto 0;
+    max-width: 200px;
+  }
+
+  .section-divider-line { flex: 1; height: 1px; background: var(--gold); opacity: 0.4; }
+  .section-divider-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
+
+  /* ─── PILLARS ─── */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2px;
+    background: var(--gold);
+    border: 2px solid var(--gold);
+  }
+
+  .pillar {
+    background: var(--white);
+    padding: 50px 30px;
+    text-align: center;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pillar::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--crimson);
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+    z-index: 0;
+  }
+
+  .pillar:hover::before { transform: translateY(0); }
+
+  .pillar-icon {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    display: block;
+    position: relative; z-index: 1;
+  }
+
+  .pillar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+    position: relative; z-index: 1;
+    transition: color 0.4s;
+  }
+
+  .pillar-text {
+    font-size: 0.82rem;
+    line-height: 1.8;
+    color: var(--text-mid);
+    position: relative; z-index: 1;
+    transition: color 0.4s;
+  }
+
+  .pillar:hover .pillar-title { color: var(--gold-light); }
+  .pillar:hover .pillar-text { color: rgba(255,254,249,0.8); }
+
+  /* ─── TAGLINE STRIP ─── */
+  .tagline-strip {
+    background: var(--crimson);
+    padding: 20px 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(201,168,76,0.3);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .tagline-scroll {
+    display: flex;
+    gap: 60px;
+    white-space: nowrap;
+    animation: scrollLeft 30s linear infinite;
+  }
+
+  @keyframes scrollLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .tagline-item {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--gold-pale);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  .tagline-dot { color: var(--gold); margin: 0 10px; }
+
+  /* ─── EVENT TYPES ─── */
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .event-card {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    padding: 36px 20px;
+    text-align: center;
+    border-radius: 3px;
+    transition: all 0.35s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .event-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--crimson), var(--gold));
+    transform: scaleX(0);
+    transition: transform 0.35s ease;
+  }
+
+  .event-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-gold);
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  .event-card:hover::after { transform: scaleX(1); }
+
+  .event-icon {
+    font-size: 2.8rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .event-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  /* ─── SERVICES ─── */
+  .services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .service-category {
+    background: rgba(255,254,249,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.35s;
+  }
+
+  .service-category:hover {
+    border-color: rgba(201,168,76,0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.15);
+  }
+
+  .service-cat-header {
+    background: linear-gradient(135deg, var(--crimson-deep), var(--crimson));
+    padding: 24px 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  .service-cat-icon { font-size: 1.8rem; }
+
+  .service-cat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 0.5px;
+  }
+
+  .service-list {
+    padding: 24px 28px;
+    list-style: none;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .service-list li {
+    font-size: 0.82rem;
+    color: rgba(255,254,249,0.7);
+    letter-spacing: 0.5px;
+    display: flex; align-items: center; gap: 10px;
+    line-height: 1.5;
+  }
+
+  .service-list li::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ─── BUDGET SECTION ─── */
+  .budget-section {
+    background: linear-gradient(135deg, var(--cream), var(--cream-dark));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .budget-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(139,26,26,0.06) 0%, transparent 50%);
+  }
+
+  .budget-inner {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .budget-text .section-header { text-align: left; margin-bottom: 30px; }
+  .budget-text .section-eyebrow { text-align: left; }
+
+  .budget-text p {
+    font-size: 0.88rem;
+    line-height: 1.9;
+    color: var(--text-mid);
+    margin-bottom: 20px;
+  }
+
+  .budget-highlight {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--crimson);
+    margin: 20px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--gold);
+    line-height: 1.5;
+  }
+
+  .budget-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 30px;
+  }
+
+  .budget-feature {
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+
+  .budget-feature-icon {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+
+  .budget-feature-text {
+    font-size: 0.8rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .budget-card {
+    background: var(--charcoal);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: var(--shadow-deep);
+  }
+
+  .budget-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .budget-card-sub {
+    font-size: 0.8rem;
+    color: rgba(255,254,249,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  .budget-tiers {
+    display: flex; flex-direction: column; gap: 16px;
+    margin-bottom: 34px;
+  }
+
+  .budget-tier {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 18px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 3px;
+  }
+
+  .budget-tier-name {
+    font-size: 0.78rem;
+    color: rgba(255,254,249,0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .budget-tier-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--gold);
+  }
+
+  /* ─── LOCATION ─── */
+  .location-section { background: var(--cream-dark); }
+
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+  }
+
+  .location-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(26,18,8,0.08);
+    border: 1px solid rgba(201,168,76,0.15);
+    transition: all 0.35s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .location-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--crimson), var(--gold));
+  }
+
+  .location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-gold);
+  }
+
+  .location-icon { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+
+  .location-city {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .location-state {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .location-desc {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-section {
+    background: var(--charcoal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(139,26,26,0.2) 0%, transparent 70%);
+  }
+
+  .contact-inner {
+    position: relative; z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+    background: rgba(201,168,76,0.2);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+
+  .contact-item {
+    background: rgba(255,254,249,0.04);
+    padding: 40px 30px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .contact-item:hover { background: rgba(201,168,76,0.08); }
+
+  .contact-item-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
+
+  .contact-item-label {
+    font-size: 0.65rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .contact-item-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--white);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .contact-item-value a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .contact-item-value a:hover { color: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0D0A05;
+    padding: 50px 5% 30px;
+    text-align: center;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255,254,249,0.4);
+    margin-bottom: 30px;
+  }
+
+  .footer-nav {
+    display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 30px;
+    list-style: none;
+  }
+
+  .footer-nav a {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,254,249,0.4);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-nav a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(255,254,249,0.2);
+    letter-spacing: 1px;
+  }
+
+  .footer-divider {
+    height: 1px;
+    background: rgba(201,168,76,0.1);
+    margin: 24px 0;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .budget-inner { grid-template-columns: 1fr; }
+    .events-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .services-container { grid-template-columns: 1fr; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .pillars { grid-template-columns: 1fr 1fr; }
+    .budget-features { grid-template-columns: 1fr; }
+  }
+
+  /* ─── SECTION DECORATION NUMBERS ─── */
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(201,168,76,0.06);
+    position: absolute;
+    top: 40px; right: 5%;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#home" class="nav-logo">RANGREZA <span>Events</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">✦ Est. Maharashtra · Pune · Mumbai ✦</p>
+    <h1 class="hero-title">
+      <span class="gold">Rangreza</span><br>
+      <span class="italic">Event Company</span>
+    </h1>
+    <div class="hero-divider">
+      <span class="hero-divider-line"></span>
+      <span class="hero-divider-diamond"></span>
+      <span class="hero-divider-line"></span>
+    </div>
+    <p class="hero-tagline">"Where Every Moment Becomes a Masterpiece"</p>
+    <p class="hero-message">
+      Every event is a story waiting to be told — and we are the storytellers. At Rangreza, 
+      we believe that your celebration deserves nothing but the extraordinary. From the first 
+      spark of an idea to the final curtain call, we pour our heart into every detail, every 
+      decoration, every smile. Your dream is not just our priority — it is our passion, our 
+      purpose, and our promise to you.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get Free Consultation</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ── TAGLINE MARQUEE ── -->
+<div class="tagline-strip">
+  <div class="tagline-scroll">
+    <span class="tagline-item">✦ Your Dream Is Our First Priority</span>
+    <span class="tagline-item">✦ We Don't Plan Events — We Create Experiences</span>
+    <span class="tagline-item">✦ Perfection Is Our Promise, Joy Is Our Product</span>
+    <span class="tagline-item">✦ Every Detail Deserves to Be Beautiful</span>
+    <span class="tagline-item">✦ Making Memories That Last a Lifetime</span>
+    <span class="tagline-item">✦ Where Celebrations Come Alive</span>
+    <span class="tagline-item">✦ Your Vision, Our Execution, One Perfect Occasion</span>
+    <span class="tagline-item">✦ Your Dream Is Our First Priority</span>
+    <span class="tagline-item">✦ We Don't Plan Events — We Create Experiences</span>
+    <span class="tagline-item">✦ Perfection Is Our Promise, Joy Is Our Product</span>
+    <span class="tagline-item">✦ Every Detail Deserves to Be Beautiful</span>
+    <span class="tagline-item">✦ Making Memories That Last a Lifetime</span>
+    <span class="tagline-item">✦ Where Celebrations Come Alive</span>
+    <span class="tagline-item">✦ Your Vision, Our Execution, One Perfect Occasion</span>
+  </div>
+</div>
+
+<!-- ── ABOUT / PILLARS ── -->
+<section class="section" id="about" style="padding-bottom: 0;">
+  <div class="section-header fade-in">
+    <span class="section-eyebrow">Who We Are</span>
+    <h2 class="section-title">Built on Four Cornerstones</h2>
+    <p class="section-subtitle">Excellence is not an accident — it's the result of passion, discipline, and an unwavering commitment to your happiness.</p>
+    <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+  </div>
+</section>
+
+<div class="pillars fade-in">
+  <div class="pillar">
+    <span class="pillar-icon">💎</span>
+    <h3 class="pillar-title">Unmatched Quality</h3>
+    <p class="pillar-text">We source the finest décor, coordinate with top-tier vendors, and settle for nothing less than flawless. Quality is embedded in every decision we make.</p>
+  </div>
+  <div class="pillar">
+    <span class="pillar-icon">🤝</span>
+    <h3 class="pillar-title">Absolute Trust</h3>
+    <p class="pillar-text">Your event is sacred to us. We handle every responsibility with transparency, honesty, and reliability — so you can celebrate without a single worry.</p>
+  </div>
+  <div class="pillar">
+    <span class="pillar-icon">⭐</span>
+    <h3 class="pillar-title">Pure Perfection</h3>
+    <p class="pillar-text">From seating arrangements to stage lighting, we obsess over every detail. Perfection isn't a goal — it's our standard, every single time.</p>
+  </div>
+  <div class="pillar">
+    <span class="pillar-icon">🎯</span>
+    <h3 class="pillar-title">Dedicated Service</h3>
+    <p class="pillar-text">A dedicated team works exclusively on your event from concept to completion, available around the clock to ensure a seamless, magical experience.</p>
+  </div>
+</div>
+
+<!-- ── EVENT TYPES ── -->
+<section class="section" id="events" style="position: relative;">
+  <span class="section-number">01</span>
+  <div class="section-header fade-in">
+    <span class="section-eyebrow">What We Do</span>
+    <h2 class="section-title">Types of Events We Manage</h2>
+    <p class="section-subtitle">From intimate gatherings to grand spectacles — we bring every kind of celebration to life.</p>
+    <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+  </div>
+
+  <div class="events-grid fade-in">
+    <div class="event-card">
+      <span class="event-icon">💍</span>
+      <p class="event-name">Weddings</p>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🎂</span>
+      <p class="event-name">Birthday Parties</p>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🎓</span>
+      <p class="event-name">College Festivals</p>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🎵</span>
+      <p class="event-name">Concerts</p>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">👗</span>
+      <p class="event-name">Fashion Shows</p>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🏢</span>
+      <p class="event-name">Corporate Events</p>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🎭</span>
+      <p class="event-name">Cultural Programs</p>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🏛️</span>
+      <p class="event-name">Exhibitions</p>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🏆</span>
+      <p class="event-name">Sports Events</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="section section-alt" id="services" style="position: relative;">
+  <span class="section-number" style="color: rgba(201,168,76,0.05);">02</span>
+  <div class="section-header fade-in">
+    <span class="section-eyebrow">Our Expertise</span>
+    <h2 class="section-title" style="color:var(--white);">Complete Event Services</h2>
+    <p class="section-subtitle">End-to-end management across every dimension of your event — nothing is left to chance.</p>
+    <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+  </div>
+
+  <div class="services-container fade-in">
+
+    <div class="service-category">
+      <div class="service-cat-header">
+        <span class="service-cat-icon">💍</span>
+        <h3 class="service-cat-title">Wedding Services</h3>
+      </div>
+      <ul class="service-list">
+        <li>Wedding planning & coordination</li>
+        <li>Destination weddings</li>
+        <li>Haldi, Mehendi & Sangeet management</li>
+        <li>Decoration and stage setup</li>
+        <li>Bride & groom entry planning</li>
+      </ul>
+    </div>
+
+    <div class="service-category">
+      <div class="service-cat-header">
+        <span class="service-cat-icon">🏢</span>
+        <h3 class="service-cat-title">Corporate Event Services</h3>
+      </div>
+      <ul class="service-list">
+        <li>Product launches</li>
+        <li>Annual meetings</li>
+        <li>Conferences and seminars</li>
+        <li>Award functions</li>
+        <li>Team-building events</li>
+      </ul>
+    </div>
+
+    <div class="service-category">
+      <div class="service-cat-header">
+        <span class="service-cat-icon">🎶</span>
+        <h3 class="service-cat-title">Entertainment Services</h3>
+      </div>
+      <ul class="service-list">
+        <li>DJ and music arrangements</li>
+        <li>Live bands and singers</li>
+        <li>Celebrity management</li>
+        <li>Dance performances</li>
+        <li>Anchors / hosts</li>
+      </ul>
+    </div>
+
+    <div class="service-category">
+      <div class="service-cat-header">
+        <span class="service-cat-icon">🌸</span>
+        <h3 class="service-cat-title">Decoration & Design</h3>
+      </div>
+      <ul class="service-list">
+        <li>Floral decoration</li>
+        <li>Lighting setup</li>
+        <li>Stage design</li>
+        <li>Mandap decoration</li>
+        <li>Entry gate decoration</li>
+      </ul>
+    </div>
+
+    <div class="service-category">
+      <div class="service-cat-header">
+        <span class="service-cat-icon">🍽️</span>
+        <h3 class="service-cat-title">Food & Catering</h3>
+      </div>
+      <ul class="service-list">
+        <li>Catering services</li>
+        <li>Menu planning</li>
+        <li>Snacks and beverages</li>
+        <li>Buffet arrangements</li>
+      </ul>
+    </div>
+
+    <div class="service-category">
+      <div class="service-cat-header">
+        <span class="service-cat-icon">🎬</span>
+        <h3 class="service-cat-title">Technical Services</h3>
+      </div>
+      <ul class="service-list">
+        <li>Sound systems</li>
+        <li>LED screens</li>
+        <li>Projectors</li>
+        <li>Photography and videography</li>
+        <li>Live streaming</li>
+      </ul>
+    </div>
+
+    <div class="service-category">
+      <div class="service-cat-header">
+        <span class="service-cat-icon">🎟️</span>
+        <h3 class="service-cat-title">Guest Management</h3>
+      </div>
+      <ul class="service-list">
+        <li>Invitations and RSVP handling</li>
+        <li>Guest welcome</li>
+        <li>Seating arrangements</li>
+        <li>Hospitality services</li>
+      </ul>
+    </div>
+
+    <div class="service-category">
+      <div class="service-cat-header">
+        <span class="service-cat-icon">📢</span>
+        <h3 class="service-cat-title">Marketing & Promotion</h3>
+      </div>
+      <ul class="service-list">
+        <li>Social media promotion</li>
+        <li>Event branding</li>
+        <li>Poster / banner design</li>
+        <li>Ticket management</li>
+      </ul>
+    </div>
+
+    <div class="service-category">
+      <div class="service-cat-header">
+        <span class="service-cat-icon">🚛</span>
+        <h3 class="service-cat-title">Logistics & Support</h3>
+      </div>
+      <ul class="service-list">
+        <li>Transportation</li>
+        <li>Security management</li>
+        <li>Parking arrangements</li>
+        <li>Permissions and licenses</li>
+        <li>Backup and emergency support</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── BUDGET ── -->
+<section class="section budget-section" id="budget" style="position: relative;">
+  <span class="section-number">03</span>
+  <div class="budget-inner">
+    <div class="budget-text fade-in">
+      <div class="section-header">
+        <span class="section-eyebrow">Transparent Pricing</span>
+        <h2 class="section-title">Affordable Events,<br>Exceptional Experiences</h2>
+        <div class="section-divider" style="margin: 20px 0 0;"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+      </div>
+      <p>We offer customized event management solutions for every budget. From intimate celebrations to large corporate gatherings, our team ensures seamless execution, creative planning, and excellent value for money.</p>
+      <div class="budget-highlight">"Great events don't need great budgets — they need great people."</div>
+      <p>Request a free consultation and receive a personalized quotation based on your event requirements. No hidden charges. No surprises. Just pure, joyful celebrations.</p>
+      <div class="budget-features">
+        <div class="budget-feature">
+          <div class="budget-feature-icon">✓</div>
+          <span class="budget-feature-text">Free consultation</span>
+        </div>
+        <div class="budget-feature">
+          <div class="budget-feature-icon">✓</div>
+          <span class="budget-feature-text">Custom quotation</span>
+        </div>
+        <div class="budget-feature">
+          <div class="budget-feature-icon">✓</div>
+          <span class="budget-feature-text">No hidden charges</span>
+        </div>
+        <div class="budget-feature">
+          <div class="budget-feature-icon">✓</div>
+          <span class="budget-feature-text">Flexible packages</span>
+        </div>
+        <div class="budget-feature">
+          <div class="budget-feature-icon">✓</div>
+          <span class="budget-feature-text">EMI options available</span>
+        </div>
+        <div class="budget-feature">
+          <div class="budget-feature-icon">✓</div>
+          <span class="budget-feature-text">Value for money</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="budget-card fade-in">
+      <h3 class="budget-card-title">Our Packages</h3>
+      <p class="budget-card-sub">Tailored to Your Needs</p>
+      <div class="budget-tiers">
+        <div class="budget-tier">
+          <span class="budget-tier-name">🌸 Intimate Events</span>
+          <span class="budget-tier-price">Custom Quote</span>
+        </div>
+        <div class="budget-tier">
+          <span class="budget-tier-name">💍 Wedding Packages</span>
+          <span class="budget-tier-price">Custom Quote</span>
+        </div>
+        <div class="budget-tier">
+          <span class="budget-tier-name">🏢 Corporate Events</span>
+          <span class="budget-tier-price">Custom Quote</span>
+        </div>
+        <div class="budget-tier">
+          <span class="budget-tier-name">🎵 Large Scale Events</span>
+          <span class="budget-tier-price">Custom Quote</span>
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary" style="display: block; text-align: center;">Get Free Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOCATION ── -->
+<section class="section location-section" id="location" style="position: relative;">
+  <span class="section-number">04</span>
+  <div class="section-header fade-in">
+    <span class="section-eyebrow">Our Presence</span>
+    <h2 class="section-title">We Serve Across Maharashtra</h2>
+    <p class="section-subtitle">Proudly operating from the heart of Maharashtra, bringing world-class events to your city.</p>
+    <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+  </div>
+
+  <div class="locations-grid fade-in">
+    <div class="location-card">
+      <span class="location-icon">🌆</span>
+      <h3 class="location-city">Pune</h3>
+      <p class="location-state">Maharashtra</p>
+      <p class="location-desc">Our headquarters city — where it all began. Serving Pune's vibrant communities with world-class event management for every occasion, big or small.</p>
+    </div>
+    <div class="location-card">
+      <span class="location-icon">🏙️</span>
+      <h3 class="location-city">Mumbai</h3>
+      <p class="location-state">Maharashtra</p>
+      <p class="location-desc">In the city of dreams, we make your dreams real. From Bollywood-style grand events to intimate corporate gatherings in the financial capital of India.</p>
+    </div>
+    <div class="location-card">
+      <span class="location-icon">📍</span>
+      <h3 class="location-city">Pan Maharashtra</h3>
+      <p class="location-state">Across the State</p>
+      <p class="location-desc">Our team travels to serve you wherever you are. Destination weddings, outstation events — we bring Rangreza's magic to every corner of Maharashtra.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow">Get In Touch</span>
+      <h2 class="section-title" style="color:var(--white);">Let's Create Something Beautiful</h2>
+      <p class="section-subtitle">Ready to start planning your dream event? Reach out and let's turn your vision into an unforgettable reality.</p>
+      <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+    </div>
+
+    <div class="contact-grid fade-in">
+      <div class="contact-item">
+        <span class="contact-item-icon">🏷️</span>
+        <span class="contact-item-label">Company</span>
+        <p class="contact-item-value">Rangreza Event Company</p>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">📍</span>
+        <span class="contact-item-label">City</span>
+        <p class="contact-item-value">Pune & Mumbai<br><small style="font-size: 0.8rem; color: rgba(255,254,249,0.4);">Maharashtra, India</small></p>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">📞</span>
+        <span class="contact-item-label">Mobile</span>
+        <p class="contact-item-value"><a href="tel:+918262089398">+91 82620 89398</a></p>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">✉️</span>
+        <span class="contact-item-label">Email</span>
+        <p class="contact-item-value"><a href="mailto:lokeshzambare213@gmail.com">lokeshzambare213<br>@gmail.com</a></p>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;" class="fade-in">
+      <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(255,254,249,0.5); margin-bottom: 24px;">
+        "The best events begin with a single conversation."
+      </p>
+      <a href="tel:+918262089398" class="btn-primary">Call Us Now</a>
+      &nbsp;&nbsp;
+      <a href="mailto:lokeshzambare213@gmail.com" class="btn-outline">Send Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">RANGREZA</div>
+  <p class="footer-tagline">"Your Dream Is Our First Priority"</p>
+  <ul class="footer-nav">
+    <li><a href="#about">About</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-divider"></div>
+  <p class="footer-copy">© 2025 Rangreza Event Company · Pune & Mumbai, Maharashtra · All Rights Reserved</p>
+</footer>
+
+<!-- ── SCROLL ANIMATION ── -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Stagger children of certain containers
+  document.querySelectorAll('.events-grid, .services-container, .locations-grid, .pillars').forEach(container => {
+    const children = container.querySelectorAll('.event-card, .service-category, .location-card, .pillar');
+    children.forEach((child, i) => {
+      child.style.transitionDelay = `${i * 0.07}s`;
+      child.classList.add('fade-in');
+      observer.observe(child);
+    });
+  });
+</script>
+</body>
+</html>
